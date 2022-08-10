@@ -121,8 +121,8 @@ function cardInfo() {
         },
       });
     }
-    loadingPage("done");
   });
+  loadingPage("done");
   // End ......
 }
 
@@ -171,7 +171,7 @@ function onSaveModal() {
 
 function loadingPage(status) {
   status
-    ? $(".screen").remove()
+    ? $(".screen").fadeOut(2000)
     : $("body").append(
         '<div class="screen"><div class="loadimg-screens"><img src="images/loading.gif" class="loadimg-screen" alt=""></div></div>'
       );
