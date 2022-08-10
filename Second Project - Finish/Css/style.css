@@ -88,7 +88,7 @@ input:checked + .slider:before {
 
 /*Image parallax and title*/
 .parallax {
-  background-image: url("/images/bitcoin.jpg");
+  background-image: url("../images/bitcoin.jpg");
   min-height: 500px;
   background-attachment: fixed;
   background-position: center;

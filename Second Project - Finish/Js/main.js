@@ -72,7 +72,7 @@ function cardInfo() {
   // More Pages //
   $("#liveReports").click(async function () {
     loadingPage(); //Start Load
-    const response = await fetch("/html/livereport.html");
+    const response = await fetch("livereport.html");
     const html = await response.text();
     $(".nextdiv").html(html);
     createChart();
@@ -80,7 +80,7 @@ function cardInfo() {
   });
   $("#about").click(async function () {
     loadingPage(); //Start Load
-    const response = await fetch("/html/about.html");
+    const response = await fetch("about.html");
     const html = await response.text();
     $(".nextdiv").html(html);
     loadingPage("done"); //Stop Load
@@ -189,7 +189,7 @@ function loadingPage(status) {
   status
     ? $(".screen").remove()
     : $("body").append(
-        '<div class="screen"><div class="loadimg-screens"><img src="/images/loading.gif" class="loadimg-screen" alt=""></div></div>'
+        '<div class="screen"><div class="loadimg-screens"><img src="images/loading.gif" class="loadimg-screen" alt=""></div></div>'
       );
 }
 
