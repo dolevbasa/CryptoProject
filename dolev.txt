@@ -1,1 +1,7 @@
 this is test for git hub and i don`t know how to use it in my computer yet ...
+
+
+ 
+
+
+ליצור ערך ברירת מחדל לlocal Storage

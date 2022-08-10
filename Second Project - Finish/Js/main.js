@@ -1,22 +1,13 @@
-function getAllCoins() {
-  var coinData = localStorage.getItem("Coins");
-  var parseCoins = JSON.parse(coinData);
-  console.log(parseCoins);
-}
-
 function selectCoin(selectCoins) {
   localStorage.setItem("Coins", JSON.stringify(selectCoins));
 }
+function saveCoins(){
+  return JSON.parse(localStorage.getItem("Coins")) || [];
+}
 
-// function unselectCoin(coinId) {
-//     const selectedCoins = getAllCoins();
-//     const newSelectedCoins = selectedCoins.filter((x) => x !== coinId);
-//     window.localStorage.setItem(JSON.stringify(newSelectedCoins)); // Del items
-// }
 // News
-const selectCoins = JSON.parse(localStorage.getItem("Coins"));
+const selectCoins = saveCoins();
 let allData = [];
-const showCoins = getAllCoins();
 let chartsData = {};
 let chart;
 let latestSelectedCoin = "";
