@@ -1,12 +1,12 @@
 function selectCoin(selectCoins) {
   localStorage.setItem("Coins", JSON.stringify(selectCoins));
 }
-function saveCoins(){
+function savedCoins(){
   return JSON.parse(localStorage.getItem("Coins")) || [];
 }
 
 // News
-const selectCoins = saveCoins();
+const selectCoins = savedCoins();
 let allData = [];
 let chartsData = {};
 let chart;
