@@ -89,7 +89,6 @@ function cardInfo() {
       $.ajax({
         url: `https://api.coingecko.com/api/v3/coins/${data}`,
         success: function (cards) {
-          console.log(cards.symbol);
           let checked = "";
           if (selectCoins.indexOf(cards.symbol) !== -1) {
             checked = "checked";
@@ -165,7 +164,6 @@ function toggleCoin(el, symbol) {
   }
   selectCoin(selectCoins);
 
-  console.log("selectedCoins", selectCoins);
 }
 function onSaveModal() {
   if (latestSelectedCoin && selectCoins.length < 5) {
@@ -190,7 +188,6 @@ const createChart = () => {
       ","
     )}&tsyms=USD,EUR$api_key=767fcb4fa4f239d141bbc774069cb70c14971ad503b4f2e3f6c416ec37ed38b1`,
     success: (response) => {
-      console.log(response);
       let chartData = [];
       for (let keys in response) {
         chartsData[keys] = {
@@ -227,7 +224,6 @@ const createChart = () => {
       chartsInterval = setInterval(() => {
         updateChart();
       }, 2000);
-      console.log("response", response);
     },
   });
 };
