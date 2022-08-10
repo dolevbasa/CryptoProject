@@ -70,10 +70,6 @@ input:checked + .slider:before {
   margin: auto;
   margin-top: 10px;
 }
-/* .mycards{
-  /* margin:auto 25%; */
-  /* display: inline-block; */
-
 .images{
   width: 150px;
   margin: auto;
@@ -81,9 +77,6 @@ input:checked + .slider:before {
 .mycards{
   margin: auto;
 }
-/* .cardpos{
-  margin: 10px 10px;
-} */
 /* Card End..... */
 
 /*Image parallax and title*/
@@ -156,7 +149,6 @@ input:checked + .slider:before {
   z-index: 2000;
 }
 /* End ..... */
-
 /* About Design */
 .design{
   font-family: 'Square Peg', cursive;
@@ -171,11 +163,4 @@ input:checked + .slider:before {
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
-
-
-
-/* .cardpos{
-  background-image: url("images/bitcoins.jpg");
-  background-size: 300px;
-  margin: 10px 10px;
-} */
+/* End ..... */

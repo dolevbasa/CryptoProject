@@ -124,9 +124,6 @@ function cardInfo() {
     loadingPage("done");
   });
   // End ......
-  // Live Reports
-  // Data Here
-  //End ....
 }
 
 function toggleCoin(el, symbol) {
