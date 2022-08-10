@@ -4,7 +4,6 @@ function selectCoin(selectCoins) {
 function savedCoins(){
   return JSON.parse(localStorage.getItem("Coins")) || [];
 }
-
 // News
 const selectCoins = savedCoins();
 let allData = [];
@@ -24,7 +23,6 @@ $.ajax({
   },
 });
 // End ....
-
 // Card Create
 function cardInfo() {
   const cards = allData;
