@@ -1,7 +1,7 @@
 function selectCoin(selectCoins) {
   localStorage.setItem("Coins", JSON.stringify(selectCoins));
 }
-function savedCoins(){
+function savedCoins() {
   return JSON.parse(localStorage.getItem("Coins")) || [];
 }
 // News
@@ -83,46 +83,56 @@ function cardInfo() {
     loadingPage();
     if (data == "") {
       alert("You Need Search Something :)");
+      loadingPage("done");
     } else {
       $.ajax({
-        url: `https://api.coingecko.com/api/v3/coins/${data}`,
-        success: function (cards) {
-          let checked = "";
-          if (selectCoins.indexOf(cards.symbol) !== -1) {
-            checked = "checked";
+        url: `https://api.coingecko.com/api/v3/search?query=${data}`,
+        success: function (response) {
+          if (response.coins.length === 0) {
+            alert("Put Coin Name");
+            return;
           }
-          $(".mycards").empty();
-          myHTML += `
-                <div class="card cardpos row col-lg-4 col-12 d-inline-block text-center">
-                <div class="card-body">
-                <label class="switch">
-                <input type="checkbox" ${checked} onclick="toggleCoin(this,'${cards.symbol}')">
-                <span class="slider round"></span>
-                </label>
-                <h5 class="card-title">${cards.name}</h5>
-                <hr>
-                <p class="card-text">${cards.symbol}</p>
-                <button class="btn btn-success" data-toggle="collapse" data-target="#collapseExample">More Info</button>
-                <div class="collapse" id="collapseExample">
-                <div class="card card-body images">
-                <img src="${cards.image.large}" alt="coinImg">
-                ${cards.market_data.current_price.eur}€<br>
-                ${cards.market_data.current_price.usd}$<br>
-                ${cards.market_data.current_price.ils}₪<br>
-            </div>
-            </div>
-            </div>
-            </div>
-        `;
-          $(".mycards").html(myHTML);
-        },
-        error: function () {
-          alert("Cannot find this coin :( Try again");
+          $.ajax({
+            url: `https://api.coingecko.com/api/v3/coins/${response.coins[0].id}`,
+            success: function (cards) {
+              let checked = "";
+              if (selectCoins.indexOf(cards.symbol) !== -1) {
+                checked = "checked";
+              }
+              $(".mycards").empty();
+              myHTML += `
+                    <div class="card cardpos row col-lg-4 col-12 d-inline-block text-center">
+                    <div class="card-body">
+                    <label class="switch">
+                    <input type="checkbox" ${checked} onclick="toggleCoin(this,'${cards.symbol}')">
+                    <span class="slider round"></span>
+                    </label>
+                    <h5 class="card-title">${cards.name}</h5>
+                    <hr>
+                    <p class="card-text">${cards.symbol}</p>
+                    <button class="btn btn-success" data-toggle="collapse" data-target="#collapseExample">More Info</button>
+                    <div class="collapse" id="collapseExample">
+                    <div class="card card-body images">
+                    <img src="${cards.image.large}" alt="coinImg">
+                    ${cards.market_data.current_price.eur}€<br>
+                    ${cards.market_data.current_price.usd}$<br>
+                    ${cards.market_data.current_price.ils}₪<br>
+                </div>
+                </div>
+                </div>
+                </div>
+            `;
+              $(".mycards").html(myHTML);
+            },
+            error: function () {
+              alert("Cannot find this coin :( Try again");
+            },
+          });
+          loadingPage("done");
         },
       });
     }
   });
-  loadingPage("done");
   // End ......
 }
 
@@ -158,7 +168,6 @@ function toggleCoin(el, symbol) {
     selectCoins.push(symbol);
   }
   selectCoin(selectCoins);
-
 }
 function onSaveModal() {
   if (latestSelectedCoin && selectCoins.length < 5) {
