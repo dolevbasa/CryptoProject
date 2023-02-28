@@ -16,7 +16,7 @@ $(function () {
 loadingPage("done");
 // load ajax
 $.ajax({
-  url: "https://api.coingecko.com/api/v3/coins",
+  url: "https://api.coingecko.com/api/v3/coins/",
   success: (cards) => {
     allData = cards;
     cardInfo();
